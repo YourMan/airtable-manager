@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .email-box { font-weight: bold; color: #f6821f; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+    <h1>Cloudflare Zero Trust Access</h1>
+    
+    <p>Welcome, <span id="user-email" class="email-box">Loading...</span></p>
+
+    <script>
+        // Cloudflare Access provides this endpoint automatically on protected domains
+        fetch('/cdn-cgi/access/get-identity')
+            .then(response => {
+                if (!response.ok) throw new Error('Not authenticated');
+                return response.json();
+            })
+            .then(data => {
+                // Display the email in the span
+                document.getElementById('user-email').innerText = data.email;
+            })
+            .catch(error => {
+                document.getElementById('user-email').innerText = "Guest (or Auth Failed)";
+                console.error('Error fetching identity:', error);
+            });
+    </script>
+
+</body>
+</html>
