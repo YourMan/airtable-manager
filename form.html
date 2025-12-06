@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .email-box { font-weight: bold; color: #f6821f; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+    <h1>Cloudflare Zero Trust Access</h1>
+    
+    <p>Welcome, <span id="user-email" class="email-box">Loading...</span></p>
+
+    <script>
+        // Cloudflare Access provides this endpoint automatically on protected domains
+        fetch('/cdn-cgi/access/get-identity')
+            .then(response => {
+                if (!response.ok) throw new Error('Not authenticated');
+                return response.json();
+            })
+            .then(data => {
+                // Display the email in the span
+                document.getElementById('user-email').innerText = data.email;
+            })
+            .catch(error => {
+                document.getElementById('user-email').innerText = "Guest (or Auth Failed)";
+                console.error('Error fetching identity:', error);
+            });
+    </script>
+
+
+    <form id="myForm">
+  <input type="text" name="name" placeholder="Name" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('myForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    // Replace this URL with your n8n Production Webhook URL
+    const webhookUrl = 'https://n8n.yourdomain.com/webhook/your-unique-id';
+
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    alert('Data sent to Airtable!');
+  });
+</script>
+
+</body>
+</html>
