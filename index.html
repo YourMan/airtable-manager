@@ -3,175 +3,354 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SKU Mockup Foundry</title>
+    <title>CampaignsLive - Organic Technology</title>
+    <meta name="description" content="CampaignsLive - Our data is stories" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                DEFAULT: '#FFD500',
-                50: '#FFFBE6',
-                100: '#FFF7CC',
-                200: '#FFEE99',
-                300: '#FFE466',
-                400: '#FFDA33',
-                500: '#FFD500',
-                600: '#E6C000',
-                700: '#CCAA00',
-                800: '#665500',
-                900: '#332B00',
-              }
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
-            },
-            animation: {
-              'fade-in': 'fadeIn 0.5s ease-out',
-              'slide-up': 'slideUp 0.5s ease-out',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              slideUp: {
-                '0%': { transform: 'translateY(20px)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
-              },
-              // --- Intro Sequence Animations ---
-              hopIn: {
-                '0%': { transform: 'translateX(-120%) translateY(-20px) rotate(-10deg)' },
-                '30%': { transform: 'translateX(-70%) translateY(0) rotate(0deg) scaleY(0.9)' }, /* Land/Squash */
-                '50%': { transform: 'translateX(-50%) translateY(-25px) rotate(5deg) scaleY(1.05)' }, /* Jump */
-                '70%': { transform: 'translateX(-30%) translateY(0) rotate(0deg) scaleY(0.9)' }, /* Land/Squash */
-                '85%': { transform: 'translateX(-15%) translateY(-10px) rotate(-2deg) scaleY(1.02)' }, /* Mini hop */
-                '100%': { transform: 'translateX(0) translateY(0) rotate(0deg) scaleY(1)' }
-              },
-              legMove: {
-                '0%': { transform: 'rotate(20deg) translateY(0)' },
-                '100%': { transform: 'rotate(-20deg) translateY(-2px)' }
-              },
-              swoopIn: {
-                '0%': { transform: 'translate(150%, -150%) rotate(45deg)', opacity: '0' },
-                '60%': { transform: 'translate(-10%, 10%) rotate(-10deg)', opacity: '1' },
-                '100%': { transform: 'translate(0, 0) rotate(0deg)', opacity: '1' }
-              },
-              shake: {
-                '0%, 100%': { transform: 'rotate(-10deg)' },
-                '50%': { transform: 'rotate(0deg)' }
-              },
-              sprayParticle: {
-                 '0%': { transform: 'translate(0,0) scale(0.2)', opacity: '0' },
-                 '20%': { opacity: '1' },
-                 '100%': { transform: 'translate(-120px, 60px) scale(2.0)', opacity: '0' }
-              },
-              anticipateSprint: {
-                 '0%': { transform: 'skewX(0) translateX(0)' },
-                 '40%': { transform: 'skewX(15deg) translateX(-30px) scale(0.95)' }, /* Lean back */
-                 '100%': { transform: 'skewX(-30deg) translateX(120vw) scale(1.1)' } /* Zoom */
-              },
-              spinAppear: {
-                 '0%': { transform: 'scale(0) rotateX(90deg)', opacity: '0' },
-                 '60%': { transform: 'scale(1.1) rotateX(0deg)', opacity: '1' },
-                 '100%': { transform: 'scale(1) rotateX(0deg)', opacity: '1' }
-              },
-              drawStroke: {
-                 '0%': { strokeDasharray: 300, strokeDashoffset: 300 },
-                 '100%': { strokeDasharray: 300, strokeDashoffset: 0 }
-              },
-              popIn: {
-                 '0%': { transform: 'scale(0.5)', opacity: '0', filter: 'blur(10px)' },
-                 '70%': { transform: 'scale(1.1)', opacity: '1', filter: 'blur(0px)' },
-                 '100%': { transform: 'scale(1)', opacity: '1' }
-              },
-              flash: {
-                '0%, 100%': { opacity: '0' },
-                '50%': { opacity: '0.8' }
-              },
-              fadeOut: {
-                 '0%': { opacity: '1' },
-                 '100%': { opacity: '0' }
-              }
-            }
-          },
-        },
-      }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+      
       :root {
-        --bg-body: #fafafa;
-        --text-body: #18181b;
-        --glass-bg: rgba(255, 255, 255, 0.85);
-        --glass-border: rgba(0, 0, 0, 0.1);
-        --grid-color: rgba(0, 0, 0, 0.05);
+        --color-bg: #FFFFFF;
+        --color-bg-alt: #F3F4F6;
+        --color-text: #000000;
+        --color-text-muted: #4B5563;
+        --color-accent: #FFD500;
+        --color-black: #000000;
       }
-      .dark {
-        --bg-body: #050505;
-        --text-body: #fff;
-        --glass-bg: rgba(24, 24, 27, 0.8);
-        --glass-border: rgba(255, 255, 255, 0.05);
-        --grid-color: rgba(255, 255, 255, 0.03);
+
+      html {
+        scroll-behavior: smooth;
       }
-      
+
       body {
-        background-color: var(--bg-body);
-        color: var(--text-body);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: transparent; }
-      ::-webkit-scrollbar-thumb { background: #a1a1aa; border-radius: 3px; }
-      .dark ::-webkit-scrollbar-thumb { background: #27272a; }
-      ::-webkit-scrollbar-thumb:hover { background: #71717a; }
-      .dark ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
-      
-      .glass-panel {
-        background: var(--glass-bg);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid var(--glass-border);
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-      }
-      .hero-gradient {
-        background: linear-gradient(to right, #eab308, #ca8a04, #a16207); /* Yellow/Gold gradient for light */
-      }
-      .dark .hero-gradient {
-        background: linear-gradient(to right, #facc15, #fbbf24, #f59e0b); /* Bright Yellow/Amber for dark */
-      }
-      .hero-gradient {
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-family: 'Inter', sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
       }
       
-      /* Hide scrollbar for horizontal lists */
-      .scrollbar-hide::-webkit-scrollbar { display: none; }
-      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      h1, h2, h3, h4, .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .text-accent {
+        color: var(--color-accent);
+      }
+      .bg-accent {
+        background-color: var(--color-accent);
+      }
+
+      @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      
+      /* Hero Slider Styles */
+      .hero-slide-wrapper {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        z-index: 0;
+      }
+      .hero-slide-wrapper.active {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      /* Story Slider Styles (About Section) */
+      .story-slide-wrapper {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        z-index: 0;
+      }
+      .story-slide-wrapper.active {
+        opacity: 1;
+        z-index: 1;
+      }
     </style>
   <link rel="stylesheet" href="/index.css">
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
-    "vite": "https://aistudiocdn.com/vite@^7.2.6",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
-  }
-}
-</script>
 </head>
-  <body>
-    <div id="root"></div>
+  <body class="selection:bg-[#FFD500] selection:text-black">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out bg-transparent py-8">
+      <div class="max-w-[1800px] mx-auto px-8 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#" onclick="scrollToTop(event)" class="text-3xl font-serif font-bold tracking-tight z-50 relative transition-colors duration-500 text-white nav-text">
+          CampaignsLive
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero -->
+      <section class="relative w-full h-screen min-h-[800px] overflow-hidden bg-black">
+        <!-- Slider Container -->
+        <div id="hero-slider" class="absolute inset-0 w-full h-full">
+            <!-- Images injected by JS -->
+        </div>
+        
+        <!-- Overlays -->
+        <div class="absolute inset-0 bg-black/30 z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10 pointer-events-none"></div>
+        
+        <!-- Content -->
+        <div class="relative z-20 h-full flex flex-col justify-center items-start md:items-center text-left md:text-center px-6">
+          <div class="animate-fade-in-up">
+            <span class="block text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-[#FFD500] mb-6 px-4 py-2 w-fit mx-0 md:mx-auto">Brand relevance in the age of A.I.</span>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif font-normal text-white tracking-tight mb-8 drop-shadow-xl">
+              Our data <span class="italic text-[#FFD500]">is stories.</span>
+            </h1>
+            <p class="max-w-xl mx-0 md:mx-auto text-lg md:text-xl text-white font-light leading-relaxed mb-12 drop-shadow-md">
+              Powered by intelligence trained on <b>500,000+</b><br/>
+               powerfully creative brand campaigns since 2019.<br />
+               Images available at 16MP for Print, (D)OOH, Digital.<br />
+               Video soon available at 6K for any use.<br />
+               Intellectual Property yours to keep, forever.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio 1 Section (Files starting with '1-') -->
+      <section id="portfolio-1" class="py-32 px-6 md:px-12 bg-white">
+        <div class="max-w-[1800px] mx-auto">
+          <div class="flex flex-col items-center text-center mb-24 space-y-8">
+            <h2 class="text-4xl md:text-6xl font-serif text-black">Digital</h2>
+            <div class="w-24 h-1 bg-[#FFD500]"></div>
+          </div>
+          <div id="portfolio-grid-1" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
+            <!-- Products injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- About / Feature Sections -->
+      <section id="about" class="bg-[#F3F4F6]">
+        <!-- Intro -->
+        <div class="py-24 px-6 md:px-12 max-w-[1800px] mx-auto flex flex-col md:flex-row items-start gap-16 md:gap-32">
+          <div class="md:w-1/3">
+            <h2 class="text-4xl md:text-6xl font-serif text-black leading-tight">Where Creative Ideas Start Moving.</h2>
+          </div>
+          <div class="md:w-2/3 max-w-2xl">
+            <p class="text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-8">
+              Use CampaignsLive to explore concepts, compositions, visual styles, and storytelling patterns used by top brands in every industry. Each idea is presented in ready-to-use creative material that you can adapt, evolve, or take straight into production.
+            </p>
+            <p class="text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-8">
+              Images can be generated at up to 16-megapixel resolution, suitable for print, digital, and out-of-home placements. Video generation in up to 6K resolution is coming soon, allowing you to create high-quality moving assets with the same freedom and consistency.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Story Slider (Full Width) -->
+        <div class="relative w-full h-screen min-h-[800px] overflow-hidden bg-black">
+             <div id="story-slider" class="absolute inset-0 w-full h-full">
+                <!-- Slides injected by JS -->
+             </div>
+        </div>
+        <!-- Black Spacer Bar -->
+        <div class="w-full h-[20px] bg-black"></div>
+
+        <!-- Panel 1: Image Left, Text Right -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]">
+          <div class="order-2 lg:order-1 relative h-[500px] lg:h-auto overflow-hidden group">
+             <img src="creatives/square1.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
+          </div>
+          <div class="order-1 lg:order-2 flex flex-col justify-center p-12 lg:p-24 bg-white">
+             <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">Materiality</span>
+             <h3 class="text-4xl md:text-5xl font-serif mb-8 text-black leading-tight">Creative Intelligence <br/> for ambitious brands.</h3>
+             <p class="text-lg text-gray-600 font-light leading-relaxed mb-12 max-w-md">Our system is trained on a vast dataset of more than 500,000 impactful advertising campaigns launched globally since 2019. It identifies patterns that drive attention and translates them into new creative ideas you can develop instantly.</p>
+          </div>
+        </div>
+
+        <!-- Panel 2: Text Left, Image Right -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]">
+          <div class="order-1 relative flex flex-col justify-center p-12 lg:p-24 bg-black">
+             <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#FFD500] mb-6">Atmosphere</span>
+             <h3 class="text-4xl md:text-5xl font-serif mb-8 text-white leading-tight">Build Creative <br/>That Deserves Attention.</h3>
+             <p class="text-lg text-gray-300 font-light leading-relaxed mb-12 max-w-md">For marketers and creatives who want their ideas to matter, CampaignsLive offers a data-informed, visually rich environment that accelerates the path from concept to standout campaign.</p>
+          </div>
+          <div class="order-2 relative h-[500px] lg:h-auto overflow-hidden group">
+             <img src="creatives/square2.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio 2 Section (Files starting with 'v') -->
+      <section id="portfolio-2" class="py-32 px-6 md:px-12 bg-white">
+        <div class="max-w-[1800px] mx-auto">
+           <div class="flex flex-col items-center text-center mb-24 space-y-8">
+            <h2 class="text-4xl md:text-6xl font-serif text-black">Print & OOH</h2>
+            <div class="w-24 h-1 bg-[#FFD500]"></div>
+          </div>
+          <div id="portfolio-grid-2" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
+            <!-- Products injected by JS -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-24 pb-12 px-6 text-white border-t-4 border-[#FFD500]">
+        <div class="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-4">
+                <h4 class="text-2xl font-serif text-white mb-6">CampaignsLive</h4>
+                <p class="max-w-xs font-light leading-relaxed text-gray-400">Great campaigns do not appear out of nowhere. They emerge from experience with clear insights and an understanding of what audiences already respond to.</p>
+            </div>
+        </div>
+        <div class="max-w-[1800px] mx-auto mt-20 pt-8 border-t border-gray-800 text-xs uppercase tracking-widest text-[#FFD500]">
+            <p>CONTACT: <i>IYKYK</i></p>
+        </div>
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+      // --- CONFIGURATION ---
+      const CREATIVES_FOLDER = 'creatives/';
+      
+      // Explicitly define file lists based on user requirements.
+      // 1. Hero images: hero1.jpg ... hero9.jpg
+      const HERO_FILES = Array.from({length: 9}, (_, i) => `hero${i + 1}.jpg`);
+
+      // 2. Portfolio 1: 1-1.jpg ... 1-12.jpg
+      const PORTFOLIO_1_FILES = Array.from({length: 12}, (_, i) => `1-${i + 1}.jpg`);
+
+      // 3. Portfolio 2: v1.jpg ... v12.jpg
+      const PORTFOLIO_2_FILES = Array.from({length: 12}, (_, i) => `v${i + 1}.jpg`);
+
+      // 4. Story Slider: story1.jpg ... story5.jpg
+      const STORY_FILES = Array.from({length: 5}, (_, i) => `story${i + 1}.jpg`);
+
+      // --- STATE ---
+      let currentHeroIndex = 0;
+      let currentStoryIndex = 0;
+
+      // --- INIT ---
+      document.addEventListener('DOMContentLoaded', () => {
+        initHeroSlider();
+        initStorySlider();
+        renderPortfolio('portfolio-grid-1', PORTFOLIO_1_FILES);
+        renderPortfolio('portfolio-grid-2', PORTFOLIO_2_FILES);
+      });
+
+      // --- HELPER: GET FULL PATH ---
+      function getPath(filename) {
+          return `${CREATIVES_FOLDER}${filename}`;
+      }
+
+      // --- HERO SLIDER ---
+      function initHeroSlider() {
+        const container = document.getElementById('hero-slider');
+        if (!container) return;
+
+        // Create HTML for all defined hero files.
+        // If an image fails to load (onerror), we remove the entire slide wrapper.
+        container.innerHTML = HERO_FILES.map((filename, index) => `
+            <div class="hero-slide-wrapper ${index === 0 ? 'active' : ''}">
+                <img src="${getPath(filename)}" alt="Hero" 
+                     class="w-full h-full object-cover grayscale contrast-125 brightness-75 animate-[pulse_15s_ease-in-out_infinite_alternate]" 
+                     onerror="this.closest('.hero-slide-wrapper').remove();" />
+            </div>
+        `).join('');
+
+        setInterval(() => {
+            const slides = document.querySelectorAll('.hero-slide-wrapper');
+            if (slides.length === 0) return;
+            
+            if (currentHeroIndex >= slides.length) currentHeroIndex = 0;
+            
+            slides[currentHeroIndex].classList.remove('active');
+            currentHeroIndex = (currentHeroIndex + 1) % slides.length;
+            slides[currentHeroIndex].classList.add('active');
+        }, 5000);
+      }
+
+      // --- STORY SLIDER (ABOUT SECTION) ---
+      function initStorySlider() {
+        const container = document.getElementById('story-slider');
+        if (!container) return;
+
+        // Full color images for story slider
+        container.innerHTML = STORY_FILES.map((filename, index) => `
+            <div class="story-slide-wrapper ${index === 0 ? 'active' : ''}">
+                <img src="${getPath(filename)}" alt="Story" 
+                     class="w-full h-full object-cover" 
+                     onerror="this.closest('.story-slide-wrapper').remove();" />
+            </div>
+        `).join('');
+
+        setInterval(() => {
+            const slides = document.querySelectorAll('.story-slide-wrapper');
+            if (slides.length === 0) return;
+            
+            if (currentStoryIndex >= slides.length) currentStoryIndex = 0;
+            
+            slides[currentStoryIndex].classList.remove('active');
+            currentStoryIndex = (currentStoryIndex + 1) % slides.length;
+            slides[currentStoryIndex].classList.add('active');
+        }, 4000); // Slightly faster rotation for story
+      }
+
+      // --- PORTFOLIO ---
+      function renderPortfolio(containerId, fileList) {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        
+        container.innerHTML = fileList.map((filename) => `
+           <div class="group relative z-0 hover:z-50 transition-all duration-300">
+              <div class="w-full aspect-[4/5] bg-gray-100 shadow-sm relative">
+                <img src="${getPath(filename)}" alt="${filename}" 
+                     class="w-full h-full object-cover transition-all duration-300 ease-out 
+                            hover:scale-[2] hover:border-[5px] hover:border-white hover:shadow-2xl" 
+                     onerror="this.src='https://placehold.co/600x800?text=Missing';" />
+              </div>
+           </div>
+        `).join('');
+      }
+
+      // --- NAV ---
+      function scrollToTop(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Scroll Effect
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        const textElements = document.querySelectorAll('.nav-text');
+        
+        if (window.scrollY > 50) {
+            nav.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'py-4', 'border-b', 'border-[#FFD500]');
+            nav.classList.remove('bg-transparent', 'py-8');
+            textElements.forEach(el => {
+                el.classList.remove('text-white');
+                el.classList.add('text-black');
+            });
+        } else {
+            nav.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'py-4', 'border-b', 'border-[#FFD500]');
+            nav.classList.add('bg-transparent', 'py-8');
+            textElements.forEach(el => {
+                el.classList.add('text-white');
+                el.classList.remove('text-black');
+            });
+        }
+      });
+    </script>
   <script type="module" src="/index.tsx"></script>
 </body>
 </html>
